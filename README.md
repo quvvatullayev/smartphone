@@ -120,6 +120,14 @@ INSTALLED_APPS = [
 ]
 ```
 
+- [x] Create the smartphone's app database migrations
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+
 ## - [ ] Create the views of the smartphone's app
 ### 1. Create the view of the list of products
 
