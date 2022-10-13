@@ -43,11 +43,11 @@
 
 
 # List of task
-- [ ] Create the project
+- [x] Create the project
 
 ```django-admin startproject smartphone .```
 
-- [ ] Create the app
+- [x] Create the app
 
 ```python manage.py startapp smartphone_app```
 
