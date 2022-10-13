@@ -117,3 +117,18 @@ def update_product(request, id):
         # product.img_url = request.POST['img_url']
         product.save()
     return JsonResponse({'product': {}})
+
+
+def delete_product(request, id):
+    """
+    Delete a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+    if request.method == 'GET':
+        product = Product.objects.get(id=id)
+        product.delete()
+    return JsonResponse({'product': {}})
