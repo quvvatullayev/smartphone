@@ -97,3 +97,23 @@ def add_product(request):
 
     return JsonResponse({'product': {}})
 
+def update_product(request, id):
+    """
+    Update a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+    if request.method == 'POST':
+        product = Product.objects.get(id=id)
+        # product.name = request.POST['name']
+        # product.company = request.POST['company']
+        # product.color = request.POST['color']
+        # product.RAM = request.POST['RAM']
+        # product.memory = request.POST['memory']
+        product.price = request.POST['price']
+        # product.img_url = request.POST['img_url']
+        product.save()
+    return JsonResponse({'product': {}})
