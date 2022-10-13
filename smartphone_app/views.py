@@ -28,3 +28,35 @@ def get_products(request):
 
     return JsonResponse({'products': products_json})
 
+
+def get_product(request, id):
+    """
+    Get a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+    if request.method == 'GET':
+
+        
+        product = Product.objects.get(id=id)
+
+        #Check if the product exists using the id    
+        product_json = {
+        'id': product.id,
+        'name': product.name,
+        'company': product.company,
+        'color': product.color,
+        'RAM': product.RAM,
+        'memory': product.memory,
+        'price': product.price,
+        'created_at': product.created_at,
+        'updated_at': product.updated_at,
+        'img_url': product.img_url,
+        }
+    
+
+    return JsonResponse({'product': product_json})
+
