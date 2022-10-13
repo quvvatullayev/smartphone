@@ -104,7 +104,7 @@ from .models import Product
 admin.site.register(Product)
 ```
 
-- [ ] Register the smartphone's app to the django's project
+- [x] Register the smartphone's app to the django's project
 
 ```python
 INSTALLED_APPS = [
