@@ -119,3 +119,83 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 ```
+
+## - [ ] Create the views of the smartphone's app
+### 1. Create the view of the list of products
+
+
+```python
+from django.http import JsonResponse
+
+def get_products(request):
+    """
+    Get all products
+    args:
+        request: the request object
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 2. Create the view of the detail of a product
+```python
+def get_product(request, id):
+    """
+    Get a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+
+    return JsonResponse({'product': {}})
+```
+### 3. Create the view of the creation of a product
+
+```python
+def create_product(request):
+    """
+    Create a product
+    args:
+        request: the request object
+    return:
+        JsonResponse: the product
+    """
+
+    return JsonResponse({'product': {}})
+```
+
+### 4. Create the view of the update of a product
+
+```python
+
+def update_product(request, id):
+    """
+    Update a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+    return JsonResponse({'product': {}})
+```
+
+### 5. Create the view of the deletion of a product
+
+```python
+def delete_product(request, id):
+    """
+    Delete a product
+    args:
+        request: the request object
+        id: the id of the product
+    return:
+        JsonResponse: the product
+    """
+    return JsonResponse({'product': {}})
+```
+
