@@ -96,7 +96,9 @@ class Product(models.Model):
         return self.name
 ```
 
-- [x] Register the smartphone's app database models
+- [x] Register the smartphone's app database models to the django admin
+
+
 
 ```python
 from django.contrib import admin
