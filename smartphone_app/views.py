@@ -1,3 +1,4 @@
+from itertools import product
 from django.http import JsonResponse
 from .models import Product
 
@@ -141,16 +142,32 @@ def get_products_by_company(request, company):
             products_json.append(convert_to_json(product))
 
     return JsonResponse({'products': products_json})
-def get_products_by_RAM_range(request, RAM):
+
+def get_products_by_memory_range(request, memory):
     """
-    Get all products by RAM range
+    Get all products by memory range
+    args:
+        request: the request object
+        min_memory: the min memory of the product
+        max_memory: the max memory of the product
+    """
+    if request.method == 'GET':
+        products = Product.objects.filter(memory=memory)
+        for product in products:
+                products_json.append(convert_to_json(product))
+            
+    return JsonResponse({'products': products_json})
+
+
+def get_products_by_RAM(request, RAM):
+    """
+    Get all products by RAM
     args:
         request: the request object
         RAM: the RAM of the product
     if request.method == 'GET':
-        products = Product.objects.filter(RAM=RAM)
+        products = Product.objects.filter(color=color)
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
-
     return JsonResponse({'products': products_json})
