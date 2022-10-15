@@ -128,7 +128,7 @@ python manage.py migrate
 ```
 
 
-## - [ ] Create the views of the smartphone's app
+## Create the views of the smartphone's app
 ### 1. Create the view of the list of products
 
 
@@ -222,3 +222,185 @@ python manage.py runserver 0.0.0.0:8000
 ```
 
 
+## List of views for querying the database
+### 1. Create the view of the list of products by company
+
+```python
+
+def get_products_by_company(request, company):
+    """
+    Get all products by company
+    args:
+        request: the request object
+        company: the company of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 2. Create the view of the list of products by color
+
+```python
+def get_products_by_color(request, color):
+    """
+    Get all products by color
+    args:
+        request: the request object
+        color: the color of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 3. Create the view of the list of products by RAM
+
+```python
+def get_products_by_RAM(request, RAM):
+    """
+    Get all products by RAM
+    args:
+        request: the request object
+        RAM: the RAM of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 4. Create the view of the list of products by memory
+
+```python
+def get_products_by_memory(request, memory):
+    """
+    Get all products by memory
+    args:
+        request: the request object
+        memory: the memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 5. Create the view of the list of products by price
+
+```python
+def get_products_by_price(request, price):
+    """
+    Get all products by price
+    args:
+        request: the request object
+        price: the price of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 6. Create the view of the list of products by price range
+
+```python
+def get_products_by_price_range(request, min_price, max_price):
+    """
+    Get all products by price range
+    args:
+        request: the request object
+        min_price: the min price of the product
+        max_price: the max price of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 7. Create the view of the list of products by RAM and memory
+
+```python
+def get_products_by_RAM_and_memory(request, RAM, memory):
+    """
+    Get all products by RAM and memory
+    args:
+        request: the request object
+        RAM: the RAM of the product
+        memory: the memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 8. Create the view of the list of products by RAM range
+    
+```python
+def get_products_by_RAM_range(request, min_RAM, max_RAM):
+    """
+    Get all products by RAM range
+    args:
+        request: the request object
+        min_RAM: the min RAM of the product
+        max_RAM: the max RAM of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 9. Create the view of the list of products by memory range
+
+```python
+def get_products_by_memory_range(request, min_memory, max_memory):
+    """
+    Get all products by memory range
+    args:
+        request: the request object
+        min_memory: the min memory of the product
+        max_memory: the max memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 10. Create the view of the list of products by date
+
+```python
+def get_products_by_date(request, date):
+    """
+    Get all products by date
+    args:
+        request: the request object
+        date: the date of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
+
+### 11. Create the view of the list of products by date range
+
+```python
+def get_products_by_date_range(request, min_date, max_date):
+    """
+    Get all products by date range
+    args:
+        request: the request object
+        min_date: the min date of the product
+        max_date: the max date of the product
+    return:
+        JsonResponse: the list of products
+    """
+
+    return JsonResponse({'products': []})
+```
