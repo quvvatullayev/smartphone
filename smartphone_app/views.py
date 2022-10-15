@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from .models import Product
 
 # Define the function convert_to_json
+
+
 def convert_to_json(product):
     """
     Convert a product to a JSON object
@@ -23,7 +25,8 @@ def convert_to_json(product):
         'img_url': product.img_url,
     }
     return product_json
-    
+
+
 def get_products(request):
     """
     Get all products
@@ -36,7 +39,6 @@ def get_products(request):
     products_json = []
     for product in products:
         products_json.append(convert_to_json(product))
-
 
     return JsonResponse({'products': products_json})
 
@@ -52,12 +54,10 @@ def get_product(request, id):
     """
     if request.method == 'GET':
 
-        
         product = Product.objects.get(id=id)
 
-        #Check if the product exists using the id    
+        # Check if the product exists using the id
         product_json = convert_to_json(product)
-    
 
     return JsonResponse({'product': product_json})
 
@@ -81,11 +81,12 @@ def add_product(request):
             img_url=request.POST['img_url'],
         )
         product_json = convert_to_json(product)
-        product.save() # save the product to the database
-        
+        product.save()  # save the product to the database
+
         return JsonResponse({'product': product_json})
 
     return JsonResponse({'product': {}})
+
 
 def update_product(request, id):
     """
@@ -124,7 +125,6 @@ def delete_product(request, id):
     return JsonResponse({'product': {}})
 
 
-
 def get_products_by_company(request, company):
     """
     Get all products by company
@@ -141,6 +141,22 @@ def get_products_by_company(request, company):
             products_json.append(convert_to_json(product))
 
     return JsonResponse({'products': products_json})
+
+def get_products_by_memory_range(request, memory):
+    """
+    Get all products by memory range
+    args:
+        request: the request object
+        min_memory: the min memory of the product
+        max_memory: the max memory of the product
+    """
+    if request.method == 'GET':
+        products = Product.objects.filter(memory=memory)
+        for product in products:
+                products_json.append(convert_to_json(product))
+            
+    return JsonResponse({'products': products_json})
+
 
 def get_products_by_RAM(request, RAM):
     """
