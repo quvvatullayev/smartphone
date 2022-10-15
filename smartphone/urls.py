@@ -16,21 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from smartphone_app.views import (
-    get_products, 
-    get_product, 
+    get_products,
+    get_product,
     add_product,
     update_product,
     delete_product,
     get_products_by_company,
-    get_products_by_RAM_range
+    get_products_by_memory_range,
+    get_products_by_RAM,
     )
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', get_products),
-    path('product/<int:id>', get_product), # <int:id> is a variable
+    path('product/<int:id>', get_product),  # <int:id> is a variable
     path('add_product/', add_product),
     path('update_product/<int:id>', update_product),
     path('delete_product/<int:id>', delete_product),
     path('products/<str:company>', get_products_by_company),
-    path('products_ram/<str:RAM>', get_products_by_RAM_range)
+    path('products/<str:memory>', get_products_by_memory_range),
+    path('products_RAM/<str:RAM>', get_products_by_RAM),
 ]
