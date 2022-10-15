@@ -165,6 +165,7 @@ def get_products_by_memory_range(request, memory):
             
     return JsonResponse({'products': products_json})
 
+
 def get_products_by_RAM(request, RAM):
     """
     Get all products by company
@@ -186,3 +187,5 @@ def get_products_by_RAM(request, RAM):
             products_json.append(convert_to_json(product))
             
     return JsonResponse({'products': products_json})
+
+    return JsonResponse({f'products RAM {RAM}': products_json})
