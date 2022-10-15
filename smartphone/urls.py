@@ -21,7 +21,8 @@ from smartphone_app.views import (
     add_product,
     update_product,
     delete_product,
-    get_products_by_company
+    get_products_by_company,
+    get_products_by_RAM,
     )
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +32,5 @@ urlpatterns = [
     path('update_product/<int:id>', update_product),
     path('delete_product/<int:id>', delete_product),
     path('products/<str:company>', get_products_by_company),
+    path('products_ram/<str:RAM>', get_products_by_RAM),
 ]
