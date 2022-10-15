@@ -1,3 +1,4 @@
+from itertools import product
 from django.http import JsonResponse
 from .models import Product
 
@@ -136,6 +137,23 @@ def get_products_by_company(request, company):
     """
     if request.method == 'GET':
         products = Product.objects.filter(company=company)
+        products_json = []
+        for product in products:
+            products_json.append(convert_to_json(product))
+
+    return JsonResponse({'products': products_json})
+
+def get_products_by_color(request, color):
+    """
+    Get all products by color
+    args:
+        request: the request object
+        color: the color of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        products = Product.objects.filter(color=color)
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
