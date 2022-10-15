@@ -40,3 +40,5 @@ urlpatterns = [
 ]
     path('products/RAM/<str:RAM>', get_products_by_RAM),
     path('products/company/<str:company>', get_products_by_company),
+    path('products/memory/<str:memory>', get_products_by_memory_range)
+]
