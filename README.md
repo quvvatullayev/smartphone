@@ -18,10 +18,10 @@
 
 ## List of tasks
 ### 1. Design of the project database
-- [ ] Create the database
-- [ ] Create the tables
+- [x] Create the database
+- [x] Create the tables
 - [ ] Create the relations
-- [ ] Create the views
+- [x] Create the views
 
 ### 2. Design of the project interface
 
@@ -206,4 +206,19 @@ def delete_product(request, id):
     """
     return JsonResponse({'product': {}})
 ```
+
+# Add the product to the database using the curl command
+```bash
+curl -X POST -d "name=Samsung Galaxy S21&company=Samsung&color=Black&RAM=8&memory=128&price=1000&img_url=https://www.samsung.com/galaxy-s21_gallery_01.jpg" http://localhost:8000/add_product
+```
+
+# run the server
+```bash
+python manage.py runserver
+```
+# run the server in the local network
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
 
