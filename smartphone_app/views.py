@@ -157,5 +157,4 @@ def get_products_by_color(request, color):
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
-
     return JsonResponse({'products': products_json})
