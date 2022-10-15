@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from smartphone_app.views import get_products, get_product, add_product,update_product,delete_product
+from smartphone_app.views import (
+    get_products, 
+    get_product, 
+    add_product,
+    update_product,
+    delete_product,
+    get_products_by_company
+    )
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', get_products),
@@ -23,4 +30,5 @@ urlpatterns = [
     path('add_product/', add_product),
     path('update_product/<int:id>', update_product),
     path('delete_product/<int:id>', delete_product),
+    path('products/<str:company>', get_products_by_company),
 ]
