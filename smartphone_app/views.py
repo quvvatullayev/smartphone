@@ -141,3 +141,20 @@ def get_products_by_company(request, company):
             products_json.append(convert_to_json(product))
 
     return JsonResponse({'products': products_json})
+def get_products_by_RAM_range(request, RAM):
+    """
+    Get all products by RAM range
+    args:
+        request: the request object
+        min_RAM: the min RAM of the product
+        max_RAM: the max RAM of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        products = Product.objects.filter(RAM=RAM)
+        products_json = []
+        for product in products:
+            products_json.append(convert_to_json(product))
+
+    return JsonResponse({'products': products_json})
