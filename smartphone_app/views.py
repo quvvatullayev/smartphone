@@ -1,9 +1,9 @@
 from itertools import product
 from django.http import JsonResponse
+from django.shortcuts import render
 from .models import Product
 
 # Define the function convert_to_json
-
 
 def convert_to_json(product):
     """
@@ -27,7 +27,6 @@ def convert_to_json(product):
     }
     return product_json
 
-
 def get_products(request):
     """
     Get all products
@@ -42,7 +41,6 @@ def get_products(request):
         products_json.append(convert_to_json(product))
 
     return JsonResponse({'products': products_json})
-
 
 def get_product(request, id):
     """
@@ -61,7 +59,6 @@ def get_product(request, id):
         product_json = convert_to_json(product)
 
     return JsonResponse({'product': product_json})
-
 
 def add_product(request):
     """
@@ -88,7 +85,6 @@ def add_product(request):
 
     return JsonResponse({'product': {}})
 
-
 def update_product(request, id):
     """
     Update a product
@@ -110,7 +106,6 @@ def update_product(request, id):
         product.save()
     return JsonResponse({'product': {}})
 
-
 def delete_product(request, id):
     """
     Delete a product
@@ -124,7 +119,6 @@ def delete_product(request, id):
         product = Product.objects.get(id=id)
         product.delete()
     return JsonResponse({'product': {}})
-
 
 def get_products_by_company(request, company):
     """
@@ -159,7 +153,6 @@ def get_products_by_memory_range(request, memory):
             
     return JsonResponse({'products': products_json})
 
-
 def get_products_by_RAM(request, RAM):
     """
     Get all products by RAM
@@ -189,5 +182,114 @@ def get_products_by_color(request, color):
         for i in product:
             product_json.append(convert_to_json(i))
 
+    return render(request, 'color.html', context=product_json)
+
+def get_products_by_memory(request, memory):
+    """
+    Get all products by memory
+    args:
+        request: the request object
+        memory: the memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product = Product.objects.filter(memory__gte = memory)
+        product_json = []
+        for i in product:
+            product_json.append(convert_to_json(i))
+
     return JsonResponse({'products': product_json})
 
+def get_products_by_price(request, price):
+    """
+    Get all products by price
+    args:
+        request: the request object
+        price: the price of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product = Product.objects.filter(price__lte = price)
+        product_json = []
+        for i in product:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': product_json})
+
+def get_products_by_price_range(request, min_price, max_price):
+    """
+    Get all products by price range
+    args:
+        request: the request object
+        min_price: the min price of the product
+        max_price: the max price of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product_min = Product.objects.filter(price__gte = min_price)
+        product_max = product_min.filter(price__lte = max_price)
+        product_json = []
+        for i in product_max:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': product_json})
+
+def get_products_by_RAM_and_memory(request, RAM, memory):
+    """
+    Get all products by RAM and memory
+    args:
+        request: the request object
+        RAM: the RAM of the product
+        memory: the memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product_RAM = Product.objects.filter(RAM__gte = RAM)
+        product_memory = product_RAM.filter(memory__gte = memory)
+        product_json = []
+        for i in product_memory:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': product_json})
+
+def get_products_by_RAM_range(request, min_RAM, max_RAM):
+    """
+    Get all products by RAM range
+    args:
+        request: the request object
+        min_RAM: the min RAM of the product
+        max_RAM: the max RAM of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product_minRAM = Product.objects.filter(RAM__gte = min_RAM)
+        product_maxRAM = product_minRAM.filter(RAM__lte = max_RAM)
+        product_json = []
+        for i in product_maxRAM:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': product_json})
+
+def get_products_by_memory_range(request, min_memory, max_memory):
+    """
+    Get all products by memory range
+    args:
+        request: the request object
+        min_memory: the min memory of the product
+        max_memory: the max memory of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product_min_memory = Product.objects.filter(memory__gte = min_memory)
+        product_max_memory = product_min_memory.filter(memory__lte = max_memory)
+        product_json = []
+        for i in product_max_memory:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': []})

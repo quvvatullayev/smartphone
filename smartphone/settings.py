@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'smartphone_app.apps.SmartphoneAppConfig',
-    'smartphone_app',
 ]
 
 MIDDLEWARE = [

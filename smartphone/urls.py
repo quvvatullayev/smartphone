@@ -25,10 +25,17 @@ from smartphone_app.views import (
     get_products_by_color,
     get_products_by_memory_range,
     get_products_by_RAM,
+    get_products_by_memory,
+    get_products_by_price,
+    get_products_by_price_range,
+    get_products_by_RAM_and_memory,
+    get_products_by_RAM_range,
+    get_products_by_memory_range,
     )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', get_products),
     path('products/', get_products),
     path('product/<int:id>', get_product),  # <int:id> is a variable
     path('add_product/', add_product),
@@ -39,5 +46,11 @@ urlpatterns = [
     path('products/<str:memory>', get_products_by_memory_range),
     path('products/RAM/<str:RAM>', get_products_by_RAM),
     path('products/company/<str:company>', get_products_by_company),
-    path('products/memory/<str:memory>', get_products_by_memory_range)
+    path('products/memory/<str:memory>', get_products_by_memory_range),
+    path('products/by_memory/<str:memory>', get_products_by_memory),
+    path('products/price/<str:price>', get_products_by_price),
+    path('products/min_and_max_price/<str:min_price>,<str:max_price>', get_products_by_price_range),
+    path('products/RAM_and_memory/<str:RAM>,<str:memory>', get_products_by_RAM_and_memory),
+    path('products/RAM_range/<str:min_RAM>,<str:max_RAM>', get_products_by_RAM_range),
+    path('products/memory_range/<str:min_memory>,<str:max_memory>', get_products_by_memory_range)
 ]
