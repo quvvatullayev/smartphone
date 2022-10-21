@@ -153,6 +153,7 @@ def get_products_by_memory_range(request, memory):
     """
     if request.method == 'GET':
         products = Product.objects.filter(memory=memory)
+        products_json = []
         for product in products:
                 products_json.append(convert_to_json(product))
             
@@ -165,9 +166,28 @@ def get_products_by_RAM(request, RAM):
     args:
         request: the request object
         RAM: the RAM of the product
+    """
     if request.method == 'GET':
-        products = Product.objects.filter(color=color)
+        products = Product.objects.filter(RAM=RAM)
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
     return JsonResponse({'products': products_json})
+
+def get_products_by_color(request, color):
+    """
+    Get all products by color
+    args:
+        request: the request object
+        color: the color of the product
+    return:
+        JsonResponse: the list of products
+    """
+    if request.method == 'GET':
+        product = Product.objects.filter(color__contains = color)
+        product_json = []
+        for i in product:
+            product_json.append(convert_to_json(i))
+
+    return JsonResponse({'products': product_json})
+
