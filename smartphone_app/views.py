@@ -1,3 +1,4 @@
+from re import template
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import Product
@@ -291,4 +292,4 @@ def get_products_by_memory_range(request, min_memory, max_memory):
         for i in product_max_memory:
             product_json.append(convert_to_json(i))
 
-    return JsonResponse({'products': []})
+    return JsonResponse({'products': product_json})
