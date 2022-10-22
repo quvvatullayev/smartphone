@@ -1,4 +1,3 @@
-from re import template
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import Product
@@ -39,8 +38,9 @@ def get_products(request):
     products_json = []
     for product in products:
         products_json.append(convert_to_json(product))
+    product_dict = {'data':products_json}
 
-    return JsonResponse({'products': products_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_product(request, id):
     """
@@ -57,8 +57,9 @@ def get_product(request, id):
 
         # Check if the product exists using the id
         product_json = convert_to_json(product)
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'product': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def add_product(request):
     """
@@ -134,8 +135,9 @@ def get_products_by_company(request, company):
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
+        product_dict = {'data':products_json}
 
-    return JsonResponse({'products': products_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_memory_range(request, memory):
     """
@@ -146,12 +148,14 @@ def get_products_by_memory_range(request, memory):
         max_memory: the max memory of the product
     """
     if request.method == 'GET':
-        products = Product.objects.filter(memory=memory)
+        products = Product.objects.filter(memory__gte=memory)
         products_json = []
         for product in products:
                 products_json.append(convert_to_json(product))
             
-    return JsonResponse({'products': products_json})
+        product_dict = {'data':products_json}
+
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_RAM(request, RAM):
     """
@@ -161,11 +165,13 @@ def get_products_by_RAM(request, RAM):
         RAM: the RAM of the product
     """
     if request.method == 'GET':
-        products = Product.objects.filter(RAM=RAM)
-        products_json = []
+        products = Product.objects.filter(RAM__gte=RAM)
+        product_json = []
         for product in products:
-            products_json.append(convert_to_json(product))
-    return JsonResponse({'products': products_json})
+            product_json.append(convert_to_json(product))
+        product_dict = {'data':product_json}
+
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_color(request, color):
     """
@@ -181,8 +187,9 @@ def get_products_by_color(request, color):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return render(request, 'color.html', context=product_json)
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_memory(request, memory):
     """
@@ -198,8 +205,9 @@ def get_products_by_memory(request, memory):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_price(request, price):
     """
@@ -215,8 +223,9 @@ def get_products_by_price(request, price):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_price_range(request, min_price, max_price):
     """
@@ -234,8 +243,9 @@ def get_products_by_price_range(request, min_price, max_price):
         product_json = []
         for i in product_max:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_RAM_and_memory(request, RAM, memory):
     """
@@ -253,8 +263,9 @@ def get_products_by_RAM_and_memory(request, RAM, memory):
         product_json = []
         for i in product_memory:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_RAM_range(request, min_RAM, max_RAM):
     """
@@ -272,8 +283,9 @@ def get_products_by_RAM_range(request, min_RAM, max_RAM):
         product_json = []
         for i in product_maxRAM:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)
 
 def get_products_by_memory_range(request, min_memory, max_memory):
     """
@@ -291,5 +303,6 @@ def get_products_by_memory_range(request, min_memory, max_memory):
         product_json = []
         for i in product_max_memory:
             product_json.append(convert_to_json(i))
+        product_dict = {'data':product_json}
 
-    return JsonResponse({'products': product_json})
+    return render(request, 'color.html', context=product_dict)

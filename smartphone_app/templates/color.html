@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mobil memory </h1>
+    <h1>{{ product_dict.data }}</h1>
+    <ul>
+        {% for i in data %}
+            <li>{{ i.company }}
+                <ul>
+                    <li><b>name</b>:       {{ i.name }}</li>
+                    <li><b>color</b>:      {{ i.color }}</li>
+                    <li><b>RAM</b>:        {{ i.RAM }}</li>
+                    <li><b>memory</b>:     {{ i.memory }}</li>
+                    <li><b>price</b>:      {{ i.price }}</li>
+                    <li><b>created_at</b>: {{ i.created_at }}</li>
+                    <li><b>updated_at</b>  {{ i.updated_at }}</li>
+                    <li><b>mobil</b>:      img<img src="{{ i.img_url }}" alt="" style="height: 150px;"></li>
+                </ul><br><br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
