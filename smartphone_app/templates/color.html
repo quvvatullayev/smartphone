@@ -10,7 +10,7 @@
     <h1>Phone information site</h1>
     <ul style="text-align: center;">
         {% for company in company %}
-            <li style="display:inline; margin-right: 50px;"><a href="http://127.0.0.1:8000/products/company/{{company}}">{{company}}</a></li>
+            <li style="display:inline; margin-right: 50px;"><a href="{% url 'company' company %}">{{company}}</a></li>
         {% endfor %}
     </ul>
     <table style="border-collapse: collapse; text-align: center; width: 100%;">
