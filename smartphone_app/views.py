@@ -38,7 +38,9 @@ def get_products(request):
     products_json = []
     for product in products:
         products_json.append(convert_to_json(product))
-    product_dict = {'data':products_json}
+    companes = Product.objects.all()
+    set_company = set([company.company for company in companes])
+    product_dict = {'data':products_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -57,7 +59,9 @@ def get_product(request, id):
 
         # Check if the product exists using the id
         product_json = convert_to_json(product)
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -135,7 +139,9 @@ def get_products_by_company(request, company):
         products_json = []
         for product in products:
             products_json.append(convert_to_json(product))
-        product_dict = {'data':products_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':products_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -152,8 +158,9 @@ def get_products_by_memory_range(request, memory):
         products_json = []
         for product in products:
                 products_json.append(convert_to_json(product))
-            
-        product_dict = {'data':products_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -169,7 +176,9 @@ def get_products_by_RAM(request, RAM):
         product_json = []
         for product in products:
             product_json.append(convert_to_json(product))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -187,7 +196,9 @@ def get_products_by_color(request, color):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -205,7 +216,9 @@ def get_products_by_memory(request, memory):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -223,7 +236,9 @@ def get_products_by_price(request, price):
         product_json = []
         for i in product:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -243,7 +258,9 @@ def get_products_by_price_range(request, min_price, max_price):
         product_json = []
         for i in product_max:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -263,7 +280,9 @@ def get_products_by_RAM_and_memory(request, RAM, memory):
         product_json = []
         for i in product_memory:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -283,7 +302,9 @@ def get_products_by_RAM_range(request, min_RAM, max_RAM):
         product_json = []
         for i in product_maxRAM:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
@@ -303,6 +324,8 @@ def get_products_by_memory_range(request, min_memory, max_memory):
         product_json = []
         for i in product_max_memory:
             product_json.append(convert_to_json(i))
-        product_dict = {'data':product_json}
+        companes = Product.objects.all()
+        set_company = set([company.company for company in companes])
+        product_dict = {'data':product_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
