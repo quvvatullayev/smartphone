@@ -160,7 +160,7 @@ def get_products_by_memory_range(request, memory):
                 products_json.append(convert_to_json(product))
         companes = Product.objects.all()
         set_company = set([company.company for company in companes])
-        product_dict = {'data':product_json, 'company':set_company}
+        product_dict = {'data':products_json, 'company':set_company}
 
     return render(request, 'color.html', context=product_dict)
 
