@@ -7,9 +7,10 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
 <body style="background-color: F5F5F;">
-    <nav class="navbar navbar-expand-lg bg-light d-flex" style="position:fixed; width: 100%; z-index: 2;">
+    <nav class="navbar navbar-expand-lg bg-light d-flex" style="position:fixed; width: 100%; z-index: 2; margin-bottom: 100px;">
         <div class="container-fluid">
           <a class="navbar-brand">Phone information site</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +28,12 @@
           </div>
         </div>
     </nav>
-  
-    <div class="container" style="top: 20000000px;">
+
+    <div class="container">
       <div class="row">
         {% for i in data %}
           <div class="card col-4 m-4 border-success mb-3" style="width: 18rem; background-color: DCDCD;" >
-            <img src="{{i.img_url}}" class="card-img-top " style="width: 100%; height: 18rem;" alt="...">
+            <img src="{{i.img_url}}" class="card-img-top " style="height:18rem;" alt="...">
             <div class="card-body border-success mb-3 card-footer" style="width:100%; background-color: E0FFF;">
               <h5 class="card-title">{{i.name}}</h5>
               <p class="card-text fst-italic fst-bolder">
@@ -71,7 +72,8 @@
         {% endfor %}
     </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
