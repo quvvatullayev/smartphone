@@ -404,3 +404,5 @@ def get_products_by_date_range(request, min_date, max_date):
 
     return JsonResponse({'products': []})
 ```
+# sayt linki
+## https://ogabekquvvatullayev.pythonanywhere.com/products/
